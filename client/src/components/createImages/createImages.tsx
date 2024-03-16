@@ -17,7 +17,7 @@ const CreateImages: React.FC = () => {
     const [image3, setImage3] = useState<any>();
 
     const productionUrl = import.meta.env.VITE_SERVER_URL_PRODUCTION as string
-    const developUrl = 'http://localhost:3001/textToSpeech' 
+    const developUrl = 'http://localhost:3000/textToSpeech' 
 
     useEffect(() => {
         const callGetImage = async () => {
