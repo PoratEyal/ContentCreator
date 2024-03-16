@@ -6,8 +6,13 @@ import textToSpeechRoute from "./routes/textToSpeeach.routes";
 const app = express();
 const port = 3000;
 
-// Use CORS middleware here, after app is instantiated
-app.use(cors());
+// Define CORS options
+const corsOptions = {
+  origin: 'https://content-creator-tik-tok.netlify.app'
+};
+
+// Use CORS middleware here, with the defined options
+app.use(cors(corsOptions));
 
 // Then, use bodyParser and your routes
 app.use(bodyParser.json());
