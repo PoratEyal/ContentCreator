@@ -4,7 +4,7 @@ import cors from "cors";
 import textToSpeechRoute from "./routes/textToSpeeach.routes";
 
 const app = express();
-const port = 3000;
+const port = 80;
 
 // Use CORS middleware here, after app is instantiated
 app.use(cors());
