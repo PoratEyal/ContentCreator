@@ -26,7 +26,7 @@ const CreateImages: React.FC = () => {
             setHashtags(responseData);
 
             try {
-                const response = await axios.post(productionUrl, { script }, { responseType: 'blob' });
+                const response = await axios.post(`${productionUrl}/textToSpeech`, { script }, { responseType: 'blob' });
                 const blob = new Blob([response.data], { type: 'audio/mp3' });
                 
                 const downloadUrl = window.URL.createObjectURL(blob);
