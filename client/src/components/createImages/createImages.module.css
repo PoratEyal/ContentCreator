@@ -1,0 +1,50 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.script_div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+h3{
+    color: white;
+    font-family: 'Rubik', sans-serif;
+}
+.script{
+    color: white;
+    margin-bottom: 35px;
+    font-family: 'Rubik', sans-serif;
+    width: 50%;
+}
+.hashtags{
+    width: 50%;
+}
+
+.audioPlayer{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.imagesContainer{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.img{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 20px;
+    width: 350px;
+    height: 350px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,46 @@
+.allPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container button {
+    font-family: 'Rubik', sans-serif;
+    font-size: 21px;
+
+    flex-basis: calc(100% / 7); /* Divides the container into 6 equal parts */
+    width: calc(100% / 7); /* For browsers that do not support flex-basis */
+    box-sizing: border-box;
+    padding: 15px; /* Optional: Adjusts padding inside the buttons */
+    margin: 10px; /* Optional: Adds space between buttons */
+    border: none;
+    height: 100px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .label{
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .btn_navigate{
+    padding: 20px;
+    margin-top: 35px;
+    border-radius: 10px;
+    background-color: rgb(79, 249, 255);
+    color: white;
+    font-size: 23px;
+    font-weight: 600;
+  }
+  
