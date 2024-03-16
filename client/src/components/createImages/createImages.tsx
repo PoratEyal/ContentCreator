@@ -16,6 +16,9 @@ const CreateImages: React.FC = () => {
     const [image2, setImage2] = useState<any>();
     const [image3, setImage3] = useState<any>();
 
+    const productionUrl = import.meta.env.VITE_SERVER_URL_PRODUCTION as string
+    const developUrl = 'http://localhost:3001/textToSpeech' 
+
     useEffect(() => {
         const callGetImage = async () => {
 
@@ -23,7 +26,7 @@ const CreateImages: React.FC = () => {
             setHashtags(responseData);
 
             try {
-                const response = await axios.post('http://localhost:3001/textToSpeech', { script }, { responseType: 'blob' });
+                const response = await axios.post(productionUrl, { script }, { responseType: 'blob' });
                 const blob = new Blob([response.data], { type: 'audio/mp3' });
                 
                 const downloadUrl = window.URL.createObjectURL(blob);
