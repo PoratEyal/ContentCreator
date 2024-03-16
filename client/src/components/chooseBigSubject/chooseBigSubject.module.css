@@ -1,46 +1,78 @@
-.allPage{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 25px;
+    background-color: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 20px;
   }
   
-  .container button {
+  .btn {
     font-family: 'Rubik', sans-serif;
-    font-size: 21px;
-
-    flex-basis: calc(100% / 7); /* Divides the container into 6 equal parts */
-    width: calc(100% / 7); /* For browsers that do not support flex-basis */
-    box-sizing: border-box;
-    padding: 15px; /* Optional: Adjusts padding inside the buttons */
-    margin: 10px; /* Optional: Adds space between buttons */
-    border: none;
-    height: 100px;
-    border-radius: 20px;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 260px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 17px;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(223, 223, 223);
+    text-align: left;
+    justify-content: space-between;
+    color: rgb(40, 40, 40);
   }
+  .btn:hover{
+    background-color: rgb(201, 201, 201);
+  }
+  .icon{
+    color: orange;
+  }
+  .btn:hover .icon {
+    transform: rotate(30deg);
+  }
+  
 
   .label{
-    color: white;
+    font-family: 'Rubik', sans-serif;
+    color: rgb(58, 58, 58);
     font-size: 25px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: row;
+    gap: 13px;
+    align-items: center;
   }
 
   .btn_navigate{
+    font-family: 'Rubik', sans-serif;
     padding: 20px;
-    margin-top: 35px;
+    margin-top: 10px;
     border-radius: 10px;
-    background-color: rgb(79, 249, 255);
+    background-color: orange;
+    border: none;
     color: white;
-    font-size: 23px;
+    font-size: 18px;
+    margin-bottom: 0px;
     font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 14px;
+    align-items: center;
+    direction: rtl;
+    width: 260px;
+  }
+  .btn_navigate:hover{
+    background-color: rgb(220, 143, 0);
   }
   

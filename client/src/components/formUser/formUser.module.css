@@ -3,12 +3,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 30px;
+    position: relative;
 }
 
 .form{
     padding: 30px;
     background-color: white;
-    border-radius: 28px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,13 +54,12 @@ form input::placeholder {
     width: 210px;
     border: none;
     border-radius: 20px;
-    padding: 15px;background-color: rgb(25, 25, 25);
+    padding: 15px;
+    background-color: orange;
     color: white;
     font-family: 'Rubik', sans-serif;
     font-size: 23px;
     font-weight: 500;
-    background-color: #130f40; /* Fallback Color */
-    background-image: linear-gradient(315deg, #130f40 0%, #000000 74%);
     cursor: pointer;
 }
 
@@ -77,11 +78,12 @@ form input::placeholder {
 }
 
 .back_icon{
-    color: white;
+    color: orange;
     position: absolute;
-    left: 30px;
-    top: 30px;
+    left: 8px;
+    top: 8px;
     font-size: 30px;
+    cursor: pointer;
 }
 
 .answer{
