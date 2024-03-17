@@ -83,6 +83,8 @@ export async function getScript(time: string, age: string, subject: string) {
     }
 }
 
+// Hashtags section - - - - - - - - - - - - - - - - - -  - - - - -
+
 export async function getHashtags(script: string) {
     const scriptPrompt = {
         model: "gpt-4",
@@ -163,6 +165,36 @@ export async function getImage(script: string) {
         return responseData;
     } catch (error) {
         console.error("Error fetching image:", error);
+        throw error;
+    }
+}
+
+
+// hebrew script section - - - - - - - - - - - - - - - - - -  - - - - -
+
+export async function getHebrewPodcast(time: string, age: string, subject: string) {
+    const scriptPrompt = {
+        model: "gpt-4",
+        messages: [
+            {
+                role: "user",
+                content: `create me a just a text for a podcast about this subject: ${subject}, for the ages of: ${age}, and the video should be ${time} seconds. just give me the text and that it!. dont give text before the script and after the script. dont give me the background music, dont give who is saying the text. dont show the time! dont write: start at the begining and: end in the end. only the text of the script and thats it!, write the answer in hebrew!!`,
+            },
+        ],
+        temperature: 0.7,
+    };
+
+    const requestOptions = {
+        method: "post",
+        url: OpenAIUrl,
+        data: scriptPrompt,
+        headers: openAiheaders,
+    };
+
+    try {
+        const responseData = (await axios(requestOptions)).data.choices[0].message.content;
+        return responseData;
+    } catch (error) {
         throw error;
     }
 }

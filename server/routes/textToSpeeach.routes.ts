@@ -45,4 +45,44 @@ router.post("/textToSpeech", async (req, res) => {
   }
 });
 
+
+
+
+router.post("/textToSpeechHebrew", async (req, res) => {
+  const text = req.body.script.text;
+  const outputFile = path.join(__dirname, "output.mp3");
+
+  try {
+    const requestHebrew = {
+      input: { text },
+      voice: {
+        languageCode: "he-IL",
+        name: "he-IL-Standard-B",
+        ssmlGender: "MALE" as any,
+      },
+      audioConfig: {
+        audioEncoding: "MP3" as any,
+        pitch: 0,
+      },
+    };
+
+    const [response] = await client.synthesizeSpeech(requestHebrew);
+    fs.writeFileSync(outputFile, response.audioContent, "binary");
+
+    res.download(outputFile, (err) => {
+      if (err) {
+        console.error("Error sending file:", err);
+      }
+      try {
+        fs.unlinkSync(outputFile);
+      } catch (deleteError) {
+        console.error("Error deleting file:", deleteError);
+      }
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("Failed to convert text to speech");
+  }
+});
+
 export default router;
