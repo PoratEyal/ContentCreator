@@ -1,19 +1,25 @@
-import express from "express";
+import express, {Request, Response} from "express";
 const router = express.Router();
 import fs from "fs";
 import { TextToSpeechClient } from "@google-cloud/text-to-speech";
 
+
 import path from "path";
+import { google } from "@google-cloud/text-to-speech/build/protos/protos";
 
 process.env.GOOGLE_APPLICATION_CREDENTIALS = "contentCreator.json";
 const client = new TextToSpeechClient();
 
-router.post("/textToSpeech", async (req, res) => {
+router.get("/", (req: Request, res: Response) => {
+  res.send("SERVER IS RUNNING");
+});
+
+router.post("/textToSpeech", async (req: Request, res: Response) => {
   const text = req.body.script.text;
   const outputFile = path.join(__dirname, "output.mp3");
 
   try {
-    const request = {
+    const request: google.cloud.texttospeech.v1.ISynthesizeSpeechRequest = {
       input: { text },
       voice: {
         languageCode: "en-US",
@@ -48,12 +54,12 @@ router.post("/textToSpeech", async (req, res) => {
 
 
 
-router.post("/textToSpeechHebrew", async (req, res) => {
+router.post("/textToSpeechHebrew", async (req: Request, res: Response) => {
   const text = req.body.script.text;
   const outputFile = path.join(__dirname, "output.mp3");
 
   try {
-    const requestHebrew = {
+    const requestHebrew: google.cloud.texttospeech.v1.ISynthesizeSpeechRequest = {
       input: { text },
       voice: {
         languageCode: "he-IL",

@@ -14,5 +14,5 @@ app.use(bodyParser.json());
 app.use("/", textToSpeechRoute);
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on port: `, port);
 });
