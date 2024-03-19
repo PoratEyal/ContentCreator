@@ -1,21 +1,15 @@
 import { createContext, useContext, useState } from "react";
 import { ChildernsProps } from "../model/types/props";
 import { ContentData } from "../model/types/content";
+import { initContent } from "../model/initialization/content";
 
 export const ContentContext = createContext<{
     data: ContentData;
-    setData: React.Dispatch<React.SetStateAction<ContentData>>
+    setData: React.Dispatch<React.SetStateAction<ContentData>>;
     updateBigSubject: (newBigSubject: any) => void;
     updateScript: (script: string) => void;
 }>({
-    data: {
-        bigSubject: "",
-        mainSubject: "",
-        script: "",
-        imgPrompt1: "",
-        imgPrompt2: "",
-        imgPrompt3: "",
-    },
+    data: initContent,
     setData: () => {},
     updateBigSubject: () => {},
     updateScript: () => {},
@@ -24,14 +18,7 @@ export const ContentContext = createContext<{
 export const useContentContext = () => useContext(ContentContext);
 
 export const ContentProvider: React.FC<ChildernsProps> = ({ children }) => {
-    const [data, setData] = useState<ContentData>({
-        bigSubject: "",
-        mainSubject: "",
-        script: "",
-        imgPrompt1: "",
-        imgPrompt2: "",
-        imgPrompt3: "",
-    });
+    const [data, setData] = useState<ContentData>(initContent);
 
     const updateBigSubject = (newBigSubject: any) => {
         setData((prevData) => ({

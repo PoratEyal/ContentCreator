@@ -1,40 +1,14 @@
 import axios from "axios";
-
-export const OpenAIUrl = "https://api.openai.com/v1/chat/completions";
-export const DALLEUrl = "https://api.openai.com/v1/images/generations";
-export const openAiheaders = {
-    Authorization: `Bearer ${import.meta.env.VITE_APIKEY}`,
-    "Content-Type": "application/json",
-};
+import { OpenAIUrl, openAiheaders } from "../model/constant/http";
+import subjectsPrompt from "../model/prompt/subjectPrompt";
+import scriptPrompt from "../model/prompt/scriptPrompt";
+import { ScriptGPT } from "../model/types/GPT";
+import hashPrompt from "../model/prompt/hashPrompt";
+import imgPrompt from "../model/prompt/imgPrompt";
+import hebrewPrompt from "../model/prompt/hebrewPrompt";
 
 // subject section - - - - - - - - - - - - - - - - - -  - - - - -
 
-export const subjectsPrompt = {
-    model: "gpt-4",
-    messages: [
-        {
-            role: "user",
-            content: "give me 12 intersting, exciting and enjoyable subjects for TikTok videos.",
-        },
-    ],
-    temperature: 0.7,
-    functions: [
-        {
-            name: "generate_subjects",
-            parameters: {
-                type: "object",
-                properties: {
-                    subjectList: {
-                        type: "array",
-                        items: {
-                            type: "string",
-                        },
-                    },
-                },
-            },
-        },
-    ],
-};
 export const requestOptions = {
     method: "post",
     url: OpenAIUrl,
@@ -56,22 +30,11 @@ export async function getSubjects() {
 
 // script section - - - - - - - - - - - - - - - - - -  - - - - -
 
-export async function getScript(time: string, age: string, subject: string) {
-    const scriptPrompt = {
-        model: "gpt-4",
-        messages: [
-            {
-                role: "user",
-                content: `create me a just a text for a TikTok video on this subject: ${subject}, for the ages of: ${age}, and the video should be ${time} seconds. just give me the script text and that it!. dont give text before the script and after the script. dont give me the background music, dont give who is saying the text. dont show the time! dont write: start at the begining and: end in the end. only the text of the script and thats it!`,
-            },
-        ],
-        temperature: 0.7,
-    };
-
+export async function getScript(script: ScriptGPT) {
     const requestOptions = {
         method: "post",
         url: OpenAIUrl,
-        data: scriptPrompt,
+        data: scriptPrompt(script),
         headers: openAiheaders,
     };
 
@@ -86,21 +49,10 @@ export async function getScript(time: string, age: string, subject: string) {
 // Hashtags section - - - - - - - - - - - - - - - - - -  - - - - -
 
 export async function getHashtags(script: string) {
-    const scriptPrompt = {
-        model: "gpt-4",
-        messages: [
-            {
-                role: "user",
-                content: `this is a script for a tiktok video: ${script}, give me the best hashtags for this video `,
-            },
-        ],
-        temperature: 0.7,
-    };
-
     const requestOptions = {
         method: "post",
         url: OpenAIUrl,
-        data: scriptPrompt,
+        data: hashPrompt(script),
         headers: openAiheaders,
     };
 
@@ -115,21 +67,10 @@ export async function getHashtags(script: string) {
 // return 3 prompts to the image genaration prompt - - - - - - - - - - - - - - - - - -  - - - - -
 
 export async function promptToImg(script: string) {
-    const scriptPrompt = {
-        model: "gpt-4",
-        messages: [
-            {
-                role: "user",
-                content: `${script}. sum-up this text and make prompt for dall e model. add to the prompt thoes rules: 1.the image need to be only realistic image. 2.dont show words in the image. example: DALL-E prompt: Create an realistic image without words.........`,
-            },
-        ],
-        temperature: 0.7,
-    };
-
     const requestOptions = {
         method: "post",
         url: OpenAIUrl,
-        data: scriptPrompt,
+        data: imgPrompt(script),
         headers: openAiheaders,
     };
 
@@ -169,25 +110,13 @@ export async function getImage(script: string) {
     }
 }
 
-
 // hebrew script section - - - - - - - - - - - - - - - - - -  - - - - -
 
-export async function getHebrewPodcast(time: string, age: string, subject: string) {
-    const scriptPrompt = {
-        model: "gpt-4",
-        messages: [
-            {
-                role: "user",
-                content: `create me a just a text for a podcast about this subject: ${subject}, for the ages of: ${age}, and the video should be ${time} seconds. just give me the text and that it!. dont give text before the script and after the script. dont give me the background music, dont give who is saying the text. dont show the time! dont write: start at the begining and: end in the end. only the text of the script and thats it!, write the answer in hebrew!!`,
-            },
-        ],
-        temperature: 0.7,
-    };
-
+export async function getHebrewPodcast(script: ScriptGPT) {
     const requestOptions = {
         method: "post",
         url: OpenAIUrl,
-        data: scriptPrompt,
+        data: hebrewPrompt(script),
         headers: openAiheaders,
     };
 

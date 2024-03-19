@@ -1,23 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './formUser.module.css';
 import { getScript } from '../../service/openAiService'
 import { IoChevronBackSharp } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import { useContentContext } from '../../context/ContentContext';
+import { ScriptGPT } from '../../model/types/GPT';
+import { initScriptGPT } from '../../model/initialization/GPT';
 
 const FormUser: React.FC = () => {
 
   const {data, updateScript}= useContentContext();
-  const [formData, setFormData] = useState({
-    videoSubject: data.bigSubject,
-    age: '',
-    time: '',
-  });
+  const [formData, setFormData] = useState<ScriptGPT>(initScriptGPT);
   const navigate = useNavigate();
   const [script, setScript] = useState();
 
+  useEffect(() => {
+    setFormData((prev) => {
+        return {
+            ...prev,
+            videoSubject: data.bigSubject,
+        };
+    });
+}, []);
+
+
   const getGPTAnswer = async() => {
-    const script = await getScript(formData.time, formData.age, formData.videoSubject);
+    const script = await getScript(formData);
     console.log(script);
     updateScript(script)
     setScript(script)
