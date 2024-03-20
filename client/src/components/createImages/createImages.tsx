@@ -25,16 +25,14 @@ const CreateImages: React.FC = () => {
 
             const responseData = await getHashtags(script.text);
             setHashtags(responseData);
-
+    
             try {
-                const response = await axios.post(developUrl, { script }, { responseType: 'blob' });
-                const blob = new Blob([response.data], { type: 'audio/mp3' });
-                
-                const downloadUrl = window.URL.createObjectURL(blob);
-                setAudioUrl(downloadUrl); // Set audio URL instead of downloading
-
+                const response = await axios.post(developUrl, { text: script.text }, { responseType: 'blob' });
+                const downloadUrl = window.URL.createObjectURL(response.data);
+                console.log(downloadUrl);
+                setAudioUrl(downloadUrl);
             } catch (error) {
-                console.error('Failed to convert text to speech:', error);
+            console.error('Failed to convert text to speech:', error);
             }
 
             try {
@@ -65,6 +63,9 @@ const CreateImages: React.FC = () => {
             callGetImage();
         }
     }, [script.text]);
+
+
+
 
     return (
         <div className={styles.container}>
