@@ -1,6 +1,6 @@
-POST https://contentcreator-epw9.onrender.com/textToSpeech
+POST http://localhost:3000/textToSpeech
 Content-Type: application/json
 
 {
-    "text": "roy gizbar"
+    "text": "roy gizbar roy gizbarroy gizbar roy gizba rroy gizbar roy gizbar roy gizbar"
 }

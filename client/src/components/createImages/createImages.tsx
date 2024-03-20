@@ -11,7 +11,7 @@ const CreateImages: React.FC = () => {
         text: data.script
     };
     const [hashtags, setHashtags] = useState<any>();
-    const [audioUrl, setAudioUrl] = useState<string | null>(null); // Add state for audio URL
+    const [audioUrl, setAudioUrl] = useState<string | null>(null);
     const [image1, setImage1] = useState<any>();
     const [image2, setImage2] = useState<any>();
     const [image3, setImage3] = useState<any>();
@@ -27,12 +27,12 @@ const CreateImages: React.FC = () => {
             setHashtags(responseData);
     
             try {
-                const response = await axios.post(productionUrl, { text: script.text }, { responseType: 'blob' });
-                const downloadUrl = window.URL.createObjectURL(response.data);
-                console.log(downloadUrl);
-                setAudioUrl(downloadUrl);
+                const text = script.text
+                const response = await axios.post(productionUrl, { text });
+                const audioSrc = `data:audio/mp3;base64,${response.data.audioContent}`
+                setAudioUrl(audioSrc);
             } catch (error) {
-            console.error('Failed to convert text to speech:', error);
+                console.error('Failed to convert text to speech:', error);
             }
 
             try {

@@ -9,6 +9,9 @@ const port = 3000;
 // Use CORS middleware to allow all origins
 app.use(cors());
 
+app.use(express.json())
+app.use(express.urlencoded({extended : false}))
+
 // Then, use bodyParser and your routes
 app.use(bodyParser.json());
 app.use("/", textToSpeechRoute);
