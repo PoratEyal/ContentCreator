@@ -3,6 +3,9 @@ import styles from './createImages.module.css';
 import axios from 'axios';
 import { getImage, promptToImg, getHashtags } from '../../service/openAiService';
 import { useContentContext } from '../../context/ContentContext';
+import Loading from '../loading/loading';
+import { IoChevronBackSharp } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
 
 const CreateImages: React.FC = () => {
 
@@ -10,11 +13,12 @@ const CreateImages: React.FC = () => {
     const script = {
         text: data.script
     };
-    const [hashtags, setHashtags] = useState<any>();
+    const [hashtags, setHashtags] = useState<string | null>(null);
     const [audioUrl, setAudioUrl] = useState<string | null>(null);
     const [image1, setImage1] = useState<any>();
     const [image2, setImage2] = useState<any>();
     const [image3, setImage3] = useState<any>();
+    const navigate = useNavigate();
 
     const baseUrl = import.meta.env.VITE_SERVER_URL_PRODUCTION as string
     const productionUrl = `${baseUrl}/textToSpeech`;
@@ -59,10 +63,9 @@ const CreateImages: React.FC = () => {
             }
         };
 
-        if (script.text) {
-            callGetImage();
-        }
-    }, [script.text]);
+        callGetImage();
+
+    }, []);
 
 
 
@@ -70,21 +73,39 @@ const CreateImages: React.FC = () => {
     return (
         <div className={styles.container}>
 
+            <IoChevronBackSharp onClick={() => navigate('/userForm')} className={styles.back_icon}></IoChevronBackSharp>
+
             <div className={styles.script_div}>
-                <h3>Script for video about {data.bigSubject}</h3>
+                <h3>{data.bigSubject} Script</h3>
                 <div className={styles.script}>{script.text}</div>
+            </div>
+
+            {hashtags && <label className={styles.line}></label>}
+
+            {
+            !hashtags ?
+                <Loading /> :
+                <div className={styles.hashtags_div}>
                 <h3>hashtags</h3>
-                {hashtags && <div className={styles.hashtags}>{hashtags}</div>}
-            </div>
+                <label className={styles.hashtags}>{hashtags}</label>
+                </div>
+            }
 
-            <div className={styles.audioPlayer}>
-                <h3>audio of the script</h3>
-                {audioUrl && <audio controls src={audioUrl}>
-                    Your browser does not support the audio element.
-                </audio>}
-            </div>
+            {audioUrl && <label className={styles.line}></label>}
 
-            <h3>audio of the script</h3>
+            {
+            !audioUrl ?
+                <Loading /> :
+                <div className={styles.audioPlayer}>
+                    <h3>audio of the script</h3>
+                    {audioUrl && <audio controls src={audioUrl}>
+                        Your browser does not support the audio element.
+                    </audio>}
+                </div>
+            }
+
+            {image1 && <label className={styles.line}></label>}
+
             <div className={styles.imagesContainer}>
                 {image1 && <img className={styles.img} src={image1[0].url} alt={`Generated img`} />}
                 {image2 && <img className={styles.img} src={image2[0].url} alt={`Generated img`} />}
