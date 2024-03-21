@@ -4,33 +4,50 @@ import { useNavigate } from 'react-router-dom';
 import { useContentContext } from '../../context/ContentContext';
 import { FaArrowRight } from "react-icons/fa6";
 import { FaWandMagicSparkles } from "react-icons/fa6";
-import { FcBinoculars } from "react-icons/fc";
+import { LuRefreshCcw } from "react-icons/lu";
+import { getSubjects } from "../../service/openAiService";
 
 const ChooseBigSubject: React.FC<any> = (props) => {
+    
     const { updateBigSubject } = useContentContext();
+    const [subjects, setSubjects] = useState(props.subjects)
     const [selectedSubjectIndex, setSelectedSubjectIndex] = useState(null);
+    const [isSpinning, setIsSpinning] = useState(false);
     const navigate = useNavigate();
-
-    // const [data, setData] = useContext(Context)
 
     const handleClick = (index: any, subject: any) => {
         setSelectedSubjectIndex(index);
         updateBigSubject(subject)
     };
 
+    const getAndSetSubjects = async () => {
+        const ans = await getSubjects();
+        setSubjects(ans.subjectList);
+        setIsSpinning(false);
+    };
+
+    const handleIconClick = () => {
+        setIsSpinning(true);
+        getAndSetSubjects()
+    };
+
     const handleNavigate = () => {
-        navigate('/userForm'); // Navigate to /userForm when this function is called
+        navigate('/userForm');
     };
 
     return (
             <div className={styles.container}>
+
+                <LuRefreshCcw
+                    className={isSpinning ? styles.refreshIconSpin : styles.refreshIcon}
+                    onClick={handleIconClick}
+                ></LuRefreshCcw>
                 
                 <div className={styles.label}>
                     <label>Choose Subject</label>
-                    <FcBinoculars></FcBinoculars>
                 </div>
 
-                {props.subjects.map((subject: any, index: number) => (
+                {subjects.map((subject: any, index: number) => (
                     <button
                         key={index}
                         className={styles.btn}

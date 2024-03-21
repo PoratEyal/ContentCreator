@@ -1,6 +1,6 @@
 import axios from "axios";
 import { OpenAIUrl, openAiheaders } from "../model/constant/http";
-import subjectsPrompt from "../model/prompt/subjectPrompt";
+import { subjectsPrompt, tinySubjectPrompt } from "../model/prompt/subjectPrompt";
 import scriptPrompt from "../model/prompt/scriptPrompt";
 import { ScriptGPT } from "../model/types/GPT";
 import hashPrompt from "../model/prompt/hashPrompt";
