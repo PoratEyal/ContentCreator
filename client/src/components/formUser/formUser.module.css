@@ -16,7 +16,7 @@
     justify-content: center;
     align-items: center;
     font-family: 'Rubik', sans-serif;
-    width: 220px;
+    width: 280px;
 }
 
 .input_div{
@@ -24,7 +24,10 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
-    width: 200px;
+    width: 250px;
+}
+.input_div label{
+    font-size: 16px;
 }
 
 .form label{
@@ -41,9 +44,9 @@ form input::placeholder {
     z-index: 999;
     border: none;
     border-radius: 15px;
-    background-color: rgba(237, 237, 237, 0.727);
+    background-color: rgba(237, 237, 237, 0.664);
     font-size: 16px;
-    padding: 8px;
+    padding: 12px;
     color: rgba(42, 42, 42, 0.91);
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
@@ -51,7 +54,7 @@ form input::placeholder {
 
 .form button{
     margin-top: 30px;
-    width: 210px;
+    width: 250px;
     border: none;
     border-radius: 20px;
     padding: 15px;

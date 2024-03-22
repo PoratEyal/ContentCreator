@@ -4,7 +4,7 @@ import axios from 'axios';
 import { getImage, promptToImg, getHashtags } from '../../service/openAiService';
 import { useContentContext } from '../../context/ContentContext';
 import Loading from '../loading/loading';
-import { IoChevronBackSharp } from "react-icons/io5";
+import { IoArrowBackOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
 const CreateImages: React.FC = () => {
@@ -73,7 +73,7 @@ const CreateImages: React.FC = () => {
     return (
         <div className={styles.container}>
 
-            <IoChevronBackSharp onClick={() => navigate('/userForm')} className={styles.back_icon}></IoChevronBackSharp>
+            <IoArrowBackOutline onClick={() => navigate('/userForm')} className={styles.back_icon}></IoArrowBackOutline>
 
             <div className={styles.script_div}>
                 <h3>{data.bigSubject} Script</h3>
@@ -107,9 +107,9 @@ const CreateImages: React.FC = () => {
             {image1 && <label className={styles.line}></label>}
 
             <div className={styles.imagesContainer}>
-                {image1 && <img className={styles.img} src={image1[0].url} alt={`Generated img`} />}
-                {image2 && <img className={styles.img} src={image2[0].url} alt={`Generated img`} />}
-                {image3 && <img className={styles.img} src={image3[0].url} alt={`Generated img`} />}
+                {image1 ? <Loading /> : <img className={styles.img} src={image1[0].url} alt={`Generated img`} />}
+                {image2 ? <Loading /> : <img className={styles.img} src={image2[0].url} alt={`Generated img`} />}
+                {image3 ? <Loading /> : <img className={styles.img} src={image3[0].url} alt={`Generated img`} />}
             </div>
         </div>
     );

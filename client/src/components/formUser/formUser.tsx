@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styles from './formUser.module.css';
 import { getScript } from '../../service/openAiService'
-import { IoChevronBackSharp } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import { useContentContext } from '../../context/ContentContext';
 import { ScriptGPT } from '../../model/types/GPT';
 import { initScriptGPT } from '../../model/initialization/GPT';
+import { IoArrowBackOutline } from "react-icons/io5";
 
 const FormUser: React.FC = () => {
 
@@ -43,7 +43,7 @@ const FormUser: React.FC = () => {
 
   return <div className={styles.container}>
 
-      <IoChevronBackSharp onClick={() => navigate('/')} className={styles.back_icon}></IoChevronBackSharp>
+      <IoArrowBackOutline onClick={() => navigate('/chooseTinySubject')} className={styles.back_icon}></IoArrowBackOutline>
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.input_div}>
@@ -59,26 +59,14 @@ const FormUser: React.FC = () => {
           </div>
 
           <div className={styles.input_div}>
-            <label htmlFor="age">Age</label>
-            <input
-              type="text"
-              id="age"
-              name="age"
-              value={formData.age}
-              onChange={handleChange}
-              placeholder="10-15"
-            />
-          </div>
-
-          <div className={styles.input_div}>
-            <label htmlFor="time">Time of the video</label>
+            <label htmlFor="time">Video time</label>
             <input
               type="number"
               id="time"
               name="time"
               value={formData.time}
               onChange={handleChange}
-              placeholder="60"
+              placeholder="60 seconds"
             />
           </div>
 

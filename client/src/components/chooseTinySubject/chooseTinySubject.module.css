@@ -20,6 +20,15 @@
   color: orange;
 }
 
+.back_icon{
+  color: orange;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
 .refreshIconSpin{
   position: absolute;
   top: 15px;
@@ -60,9 +69,10 @@
 }
   .icon{
     color: orange;
+    font-size: 15px;
   }
   .btn:hover .icon {
-    transform: rotate(30deg);
+    transform: rotate(90deg);
   }
   
 
@@ -71,14 +81,14 @@
     color: rgb(58, 58, 58);
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: row;
     gap: 13px;
     align-items: center;
     width: 250px;
     text-align: center;
-    margin-left: 10px;
+    margin-top: 40px;
   }
 
   .btn_navigate{
