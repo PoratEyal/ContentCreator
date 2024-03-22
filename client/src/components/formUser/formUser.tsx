@@ -18,7 +18,7 @@ const FormUser: React.FC = () => {
     setFormData((prev) => {
         return {
             ...prev,
-            videoSubject: data.bigSubject,
+            videoSubject: data.mainSubject,
         };
     });
 }, []);

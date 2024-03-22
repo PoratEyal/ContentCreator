@@ -28,6 +28,30 @@ export async function getSubjects() {
     }
 }
 
+
+// tiny subject section - - - - - - - - - - - - - - - - - -  - - - - -
+
+
+export async function getTinySubjects(bigSubject: string) {
+    const requestOptionsTiny = {
+        method: "post",
+        url: OpenAIUrl,
+        data: tinySubjectPrompt(bigSubject),
+        headers: openAiheaders,
+    };
+    
+    try {
+        const response = await axios(requestOptionsTiny);
+        const responseData = response.data;
+        const subjectListString = responseData?.choices?.[0]?.message?.function_call?.arguments;
+        const subjectList = JSON.parse(subjectListString);
+        return subjectList;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
 // script section - - - - - - - - - - - - - - - - - -  - - - - -
 
 export async function getScript(script: ScriptGPT) {

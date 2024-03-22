@@ -8,11 +8,13 @@ export const ContentContext = createContext<{
     setData: React.Dispatch<React.SetStateAction<ContentData>>;
     updateBigSubject: (newBigSubject: any) => void;
     updateScript: (script: string) => void;
+    updateMainSubject: (script: string) => void;
 }>({
     data: initContent,
     setData: () => {},
     updateBigSubject: () => {},
     updateScript: () => {},
+    updateMainSubject: () => {}
 });
 
 export const useContentContext = () => useContext(ContentContext);
@@ -28,6 +30,14 @@ export const ContentProvider: React.FC<ChildernsProps> = ({ children }) => {
         console.log(data);
     };
 
+    const updateMainSubject = (mainSubject: any) => {
+        setData((prevData) => ({
+            ...prevData,
+            mainSubject: mainSubject,
+        }));
+        console.log(data);
+    };
+
     const updateScript = (script: any) => {
         setData((prevData) => ({
             ...prevData,
@@ -37,7 +47,7 @@ export const ContentProvider: React.FC<ChildernsProps> = ({ children }) => {
     };
 
     return (
-        <ContentContext.Provider value={{ data, setData, updateBigSubject, updateScript }}>
+        <ContentContext.Provider value={{ data, setData, updateBigSubject, updateScript, updateMainSubject }}>
             {children}
         </ContentContext.Provider>
     );

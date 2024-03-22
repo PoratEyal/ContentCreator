@@ -1,28 +1,38 @@
-import React, { useState } from 'react';
-import styles from './chooseBigSubject.module.css';
+import React, { useEffect, useState } from 'react';
+import styles from './chooseTinySubject.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useContentContext } from '../../context/ContentContext';
 import { FaArrowRight } from "react-icons/fa6";
 import { FaWandMagicSparkles } from "react-icons/fa6";
 import { LuRefreshCcw } from "react-icons/lu";
-import { getSubjects } from "../../service/openAiService";
+import { getTinySubjects } from "../../service/openAiService";
 
-const ChooseBigSubject: React.FC<any> = (props) => {
+const chooseTinySubject: React.FC<any> = () => {
     
-    const { updateBigSubject, updateMainSubject } = useContentContext();
-    const [subjects, setSubjects] = useState(props.subjects)
+    const { data, updateMainSubject } = useContentContext();
+    const [subjects, setSubjects] = useState<any[]>([]);
     const [selectedSubjectIndex, setSelectedSubjectIndex] = useState(null);
     const [isSpinning, setIsSpinning] = useState(false);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const getAndSetSubjects = async () => {
+            const bigSubject = data.bigSubject
+            const ans = await getTinySubjects(bigSubject);
+            setSubjects(ans.subjectList);
+        };
+
+        getAndSetSubjects();
+    }, []);
+
     const handleClick = (index: any, subject: any) => {
         setSelectedSubjectIndex(index);
-        updateBigSubject(subject)
         updateMainSubject(subject)
     };
 
     const getAndSetSubjects = async () => {
-        const ans = await getSubjects();
+        const bigSubject = data.bigSubject
+        const ans = await getTinySubjects(bigSubject);
         setSubjects(ans.subjectList);
         setIsSpinning(false);
     };
@@ -33,7 +43,7 @@ const ChooseBigSubject: React.FC<any> = (props) => {
     };
 
     const handleNavigate = () => {
-        navigate('/chooseTinySubject');
+        navigate('/userForm');
     };
 
     return (
@@ -48,7 +58,7 @@ const ChooseBigSubject: React.FC<any> = (props) => {
                     <label>Choose Subject</label>
                 </div>
 
-                {subjects.map((subject: any, index: number) => (
+                {subjects && subjects.map((subject: any, index: number) => (
                     <button
                         key={index}
                         className={styles.btn}
@@ -59,6 +69,7 @@ const ChooseBigSubject: React.FC<any> = (props) => {
                         <FaArrowRight className={styles.icon}></FaArrowRight>
                     </button>
                 ))}
+
 
                 {selectedSubjectIndex !== null && (
                     <button className={styles.btn_navigate} onClick={handleNavigate}>
@@ -71,4 +82,4 @@ const ChooseBigSubject: React.FC<any> = (props) => {
     );
 };
 
-export default ChooseBigSubject;
+export default chooseTinySubject;
