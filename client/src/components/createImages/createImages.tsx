@@ -6,6 +6,7 @@ import { useContentContext } from '../../context/ContentContext';
 import Loading from '../loading/loading';
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
+import { FaRegCopy } from "react-icons/fa";
 
 const CreateImages: React.FC = () => {
 
@@ -43,7 +44,7 @@ const CreateImages: React.FC = () => {
                 const text = script.text
                 console.log(text);
                 
-                const response = await axios.post(developUrl, { text });
+                const response = await axios.post(productionUrl, { text });
                 const audioSrc = `data:audio/mp3;base64,${response.data.audioContent}`
                 setAudioUrl(audioSrc);
             } catch (error) {
@@ -89,7 +90,7 @@ const CreateImages: React.FC = () => {
             <div className={styles.script_div}>
                 <h3>{data.bigSubject} Script</h3>
                 <div className={styles.script}>{script.text}</div>
-                <button onClick={() => copyToClipboard(script.text)} className={styles.copyButton}>Copy Script</button>
+                <FaRegCopy onClick={() => copyToClipboard(script.text)} className={styles.copyIcon}></FaRegCopy>
             </div>
 
             {hashtags && <label className={styles.line}></label>}
@@ -100,7 +101,7 @@ const CreateImages: React.FC = () => {
                 <div className={styles.hashtags_div}>
                 <h3>hashtags</h3>
                 <label className={styles.hashtags}>{hashtags}</label>
-                <button onClick={() => copyToClipboard(script.text)} className={styles.copyButton}>Copy Script</button>
+                <FaRegCopy onClick={() => copyToClipboard(hashtags)} className={styles.copyIcon}></FaRegCopy>
                 </div>
             }
 
@@ -112,7 +113,7 @@ const CreateImages: React.FC = () => {
                 <div className={styles.audioPlayer}>
                     <h3>audio of the script</h3>
                     <audio controls src={audioUrl}>Your browser does not support the audio element.</audio>
-                    <a href={audioUrl} download="script-audio.mp3" className={styles.downloadButton}>Download Audio</a>
+                    <a href={audioUrl} download="script-audio.mp3" className={styles.audioDownloadButton}>Download Audio</a>
                 </div>
             }
 

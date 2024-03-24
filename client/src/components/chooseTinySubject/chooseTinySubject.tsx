@@ -44,12 +44,12 @@ const ChooseTinySubject: React.FC<any> = () => {
     };
 
     const handleNavigate = () => {
-        navigate('/userForm');
+        navigate('/');
     };
 
     return subjects ? (
         <div className={styles.container}>
-            <IoArrowBackOutline onClick={() => navigate('/')} className={styles.back_icon}></IoArrowBackOutline>
+            <IoArrowBackOutline onClick={() => navigate('/chooseSubject')} className={styles.back_icon}></IoArrowBackOutline>
             <LuRefreshCcw
                 className={isSpinning ? styles.refreshIconSpin : styles.refreshIcon}
                 onClick={handleIconClick}

@@ -30,6 +30,14 @@
     align-items: center;
     color: white;
     padding: 20px;
+    position: relative;
+}
+.copyIcon{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: rgba(255, 166, 0, 0.596);
+    font-size: 20px;
 }
 
 .line{
@@ -57,6 +65,15 @@ h3{
 .audioPlayer{
     margin-top: 10px;
     margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.audioDownloadButton{
+    margin-top: 8px;
+    color: orange;
 }
 
 .imagesContainer{
