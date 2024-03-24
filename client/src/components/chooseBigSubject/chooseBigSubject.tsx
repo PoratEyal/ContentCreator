@@ -45,7 +45,7 @@ const ChooseBigSubject: React.FC<any> = (props) => {
                 ></LuRefreshCcw>
                 
                 <div className={styles.label}>
-                    <label>Choose !! Subject</label>
+                    <label>Choose roy Subject</label>
                 </div>
 
                 {subjects.map((subject: any, index: number) => (
