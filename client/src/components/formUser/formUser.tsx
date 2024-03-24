@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContentContext } from '../../context/ContentContext';
 import { ScriptGPT } from '../../model/types/GPT';
 import { initScriptGPT } from '../../model/initialization/GPT';
-import { IoArrowBackOutline } from "react-icons/io5";
+import { FaWandMagicSparkles } from "react-icons/fa6";
 
 const FormUser: React.FC = () => {
 
@@ -43,9 +43,12 @@ const FormUser: React.FC = () => {
 
   return <div className={styles.container}>
 
-      <IoArrowBackOutline onClick={() => navigate('/')} className={styles.back_icon}></IoArrowBackOutline>
-
         <form className={styles.form} onSubmit={handleSubmit}>
+          
+          <div>
+            <h2>Fill in the details</h2>
+          </div>
+
           <div className={styles.input_div}>
             <label htmlFor="videoSubject">Video Subject</label>
             <input
@@ -54,7 +57,7 @@ const FormUser: React.FC = () => {
               name="videoSubject"
               value={formData.videoSubject}
               onChange={handleChange}
-              placeholder="nba players"
+              placeholder="Virtual Reality in Gaming"
             />
           </div>
 
@@ -66,13 +69,21 @@ const FormUser: React.FC = () => {
               name="time"
               value={formData.time}
               onChange={handleChange}
-              placeholder="60 seconds"
+              placeholder="30 seconds"
             />
           </div>
 
-          <button onClick={() => navigate('/chooseSubject')}>Get idea from AI</button>
+         
 
-          <button type="submit">Submit</button>
+          <button type="submit" className={styles.submit_btn}>
+            <FaWandMagicSparkles></FaWandMagicSparkles>
+            <label>Generate</label>
+          </button>
+
+          <button className={styles.ai_btn} onClick={() => navigate('/chooseSubject')}>
+            Generate subject with AI
+          </button>
+
         </form>
         
       </div>

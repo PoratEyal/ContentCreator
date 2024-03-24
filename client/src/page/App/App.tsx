@@ -26,12 +26,12 @@ const App: React.FC = () => {
       <Provider>
         <Router>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            {/* <Route path="/" element={<HomePage />} /> */}
 
             {subjects && <Route path="/chooseSubject" element={<ChooseBigSubject subjects={subjects} />} />}
             <Route path="/chooseTinySubject" element={<ChooseTinySubject/>} />
 
-            {subjects && <Route path="/userForm" element={<FormUser />} />}
+            {subjects && <Route path="/" element={<FormUser />} />}
             <Route path="/createImages" element={<CreateImages />} />
 
             <Route path="/podcast" element={<Podcast />} />

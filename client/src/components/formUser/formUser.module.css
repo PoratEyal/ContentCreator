@@ -3,20 +3,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 40px;
     position: relative;
 }
-
 .form{
     padding: 30px;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: 'Rubik', sans-serif;
     width: 280px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.form h2{
+    color: orange;
+    margin-top: 0px;
+    font-family: 'Rubik', sans-serif;
 }
 
 .input_div{
@@ -24,14 +30,14 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
-    width: 250px;
+    width: 280px;
 }
 .input_div label{
     font-size: 16px;
 }
 
 .form label{
-    margin-left: 15px;
+    margin-left: 16px;
     margin-bottom: 3px;
     color: rgba(42, 42, 42, 0.91);
 }
@@ -45,18 +51,18 @@ form input::placeholder {
     border: none;
     border-radius: 15px;
     background-color: rgba(237, 237, 237, 0.664);
-    font-size: 16px;
-    padding: 12px;
+    font-size: 17px;
+    padding: 15px;
     color: rgba(42, 42, 42, 0.91);
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
 }
 
-.form button{
+.submit_btn{
     margin-top: 30px;
-    width: 250px;
+    width: 280px;
     border: none;
-    border-radius: 20px;
+    border-radius: 50px;
     padding: 15px;
     background-color: orange;
     color: white;
@@ -64,20 +70,15 @@ form input::placeholder {
     font-size: 23px;
     font-weight: 500;
     cursor: pointer;
-}
-
-.answer_div{
+    direction: rtl;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 14px;
 }
-
-.label_answer{
+.submit_btn label{
     color: white;
-    font-size: 23px;
-    font-weight: 600;
-    margin-bottom: 20px;
 }
 
 .back_icon{
@@ -89,10 +90,12 @@ form input::placeholder {
     cursor: pointer;
 }
 
-.answer{
-    width: 600px;
-    height: 350px;
-    padding: 25px;
-    border-radius: 28px;
+.ai_btn{
+    background-color: rgba(255, 255, 255, 0);
     border: none;
+    border-bottom: 1px solid rgb(217, 120, 1);
+    padding: 10px;
+    padding-bottom: 5px;
+    font-size: 15px;
+    color: rgb(217, 120, 1);
 }

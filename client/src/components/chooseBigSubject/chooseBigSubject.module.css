@@ -14,16 +14,16 @@
 .back_icon{
   color: orange;
   position: absolute;
-  left: 8px;
-  top: 8px;
+  left: 20px;
+  top: 20px;
   font-size: 30px;
   cursor: pointer;
 }
 
 .refreshIcon{
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 20px;
+  right: 20px;
   font-size: 23px;
   cursor: pointer;
   color: orange;
@@ -31,8 +31,8 @@
 
 .refreshIconSpin{
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 20px;
+  right: 20px;
   font-size: 23px;
   color: orange;
   animation: spin 1s infinite linear;
@@ -55,7 +55,7 @@
   flex-direction: row;
   gap: 30px;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 13px;
   width: 260px;
   font-size: 14px;
   font-weight: 500;
@@ -71,29 +71,29 @@
     color: orange;
   }
   .btn:hover .icon {
-    transform: rotate(30deg);
+    transform: rotate(90deg);
   }
   
 
   .label{
     font-family: 'Rubik', sans-serif;
-    color: rgb(58, 58, 58);
+    color: orange;
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     gap: 13px;
     align-items: center;
     width: 250px;
     text-align: center;
-    margin-left: 10px;
+    margin-top: 40px;
   }
 
   .btn_navigate{
     font-family: 'Rubik', sans-serif;
     padding: 20px;
-    margin-top: 10px;
+    margin-top: 5px;
     border-radius: 10px;
     background-color: orange;
     border: none;

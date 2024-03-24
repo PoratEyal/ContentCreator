@@ -40,7 +40,7 @@ const ChooseBigSubject: React.FC<any> = (props) => {
     return (
             <div className={styles.container}>
 
-                <IoArrowBackOutline onClick={() => navigate('/userForm')} className={styles.back_icon}></IoArrowBackOutline>
+                <IoArrowBackOutline onClick={() => navigate('/')} className={styles.back_icon}></IoArrowBackOutline>
 
                 <LuRefreshCcw
                     className={isSpinning ? styles.refreshIconSpin : styles.refreshIcon}

@@ -24,6 +24,15 @@ const CreateImages: React.FC = () => {
     const productionUrl = `${baseUrl}/textToSpeech`;
     const developUrl = 'http://localhost:3000/textToSpeech' 
 
+    const copyToClipboard = (text: string) => {
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Copied to clipboard');
+        }).catch((error) => {
+            console.error('Copy failed', error);
+        });
+    };
+    
+
     useEffect(() => {
         const callGetImage = async () => {
 
@@ -34,7 +43,7 @@ const CreateImages: React.FC = () => {
                 const text = script.text
                 console.log(text);
                 
-                const response = await axios.post(productionUrl, { text });
+                const response = await axios.post(developUrl, { text });
                 const audioSrc = `data:audio/mp3;base64,${response.data.audioContent}`
                 setAudioUrl(audioSrc);
             } catch (error) {
@@ -75,11 +84,12 @@ const CreateImages: React.FC = () => {
     return (
         <div className={styles.container}>
 
-            <IoArrowBackOutline onClick={() => navigate('/userForm')} className={styles.back_icon}></IoArrowBackOutline>
+            <IoArrowBackOutline onClick={() => navigate('/')} className={styles.back_icon}></IoArrowBackOutline>
 
             <div className={styles.script_div}>
                 <h3>{data.bigSubject} Script</h3>
                 <div className={styles.script}>{script.text}</div>
+                <button onClick={() => copyToClipboard(script.text)} className={styles.copyButton}>Copy Script</button>
             </div>
 
             {hashtags && <label className={styles.line}></label>}
@@ -90,6 +100,7 @@ const CreateImages: React.FC = () => {
                 <div className={styles.hashtags_div}>
                 <h3>hashtags</h3>
                 <label className={styles.hashtags}>{hashtags}</label>
+                <button onClick={() => copyToClipboard(script.text)} className={styles.copyButton}>Copy Script</button>
                 </div>
             }
 
@@ -100,18 +111,17 @@ const CreateImages: React.FC = () => {
                 <Loading /> :
                 <div className={styles.audioPlayer}>
                     <h3>audio of the script</h3>
-                    {audioUrl && <audio controls src={audioUrl}>
-                        Your browser does not support the audio element.
-                    </audio>}
+                    <audio controls src={audioUrl}>Your browser does not support the audio element.</audio>
+                    <a href={audioUrl} download="script-audio.mp3" className={styles.downloadButton}>Download Audio</a>
                 </div>
             }
 
             {image1 && <label className={styles.line}></label>}
 
             <div className={styles.imagesContainer}>
-                {!image1 ? <Loading /> : <img className={styles.img} src={image1[0]?.url} alt="Generated img" />}
-                {!image2 ? <Loading /> : <img className={styles.img} src={image2[0]?.url} alt="Generated img" />}
-                {!image3 ? <Loading /> : <img className={styles.img} src={image3[0]?.url} alt="Generated img" />}
+                {image1 ? <a href={image1[0]?.url} download={`image1.jpg`}><img className={styles.img} src={image1[0]?.url} alt="Generated img" /></a> : <Loading />}
+                {image2 ? <a href={image2[0]?.url} download={`image2.jpg`}><img className={styles.img} src={image2[0]?.url} alt="Generated img" /></a> : <Loading />}
+                {image3 ? <a href={image3[0]?.url} download={`image3.jpg`}><img className={styles.img} src={image3[0]?.url} alt="Generated img" /></a> : <Loading />}
             </div>
 
         </div>
