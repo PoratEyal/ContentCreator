@@ -70,6 +70,8 @@ const FormUser: React.FC = () => {
             />
           </div>
 
+          <button onClick={() => navigate('/chooseSubject')}>Get idea from AI</button>
+
           <button type="submit">Submit</button>
         </form>
         

@@ -1,0 +1,113 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    position: relative;
+    padding: 30px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+    width: 280px;
+}
+
+.form{
+    padding: 30px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+    width: 280px;
+}
+
+.input_div{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 250px;
+}
+.input_div label{
+    font-size: 16px;
+}
+
+.form label{
+    margin-left: 15px;
+    margin-bottom: 3px;
+    color: rgba(42, 42, 42, 0.91);
+}
+.input::placeholder {
+    color: #b9b9b9;
+    font-weight: 300;
+}
+
+.input{
+    margin-top: 10px;
+    z-index: 999;
+    border: none;
+    border-radius: 15px;
+    background-color: rgba(237, 237, 237, 0.664);
+    font-size: 16px;
+    padding: 12px;
+    color: rgba(42, 42, 42, 0.91);
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.form button{
+    margin-top: 30px;
+    width: 250px;
+    border: none;
+    border-radius: 20px;
+    padding: 15px;
+    background-color: orange;
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 23px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.answer_div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.label_answer{
+    color: white;
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.back_icon{
+    color: orange;
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.h2{
+    color: rgb(46, 46, 46);
+    font-size: 23px;
+}
+
+.answer{
+    width: 260px;
+    border: none;
+    height: auto;
+    text-align: right;
+}

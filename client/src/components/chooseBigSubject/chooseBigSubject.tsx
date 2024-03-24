@@ -6,6 +6,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import { FaWandMagicSparkles } from "react-icons/fa6";
 import { LuRefreshCcw } from "react-icons/lu";
 import { getSubjects } from "../../service/openAiService";
+import { IoArrowBackOutline } from "react-icons/io5";
 
 const ChooseBigSubject: React.FC<any> = (props) => {
     
@@ -38,6 +39,8 @@ const ChooseBigSubject: React.FC<any> = (props) => {
 
     return (
             <div className={styles.container}>
+
+                <IoArrowBackOutline onClick={() => navigate('/userForm')} className={styles.back_icon}></IoArrowBackOutline>
 
                 <LuRefreshCcw
                     className={isSpinning ? styles.refreshIconSpin : styles.refreshIcon}

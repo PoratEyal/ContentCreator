@@ -4,3 +4,11 @@ Content-Type: application/json
 {
     "text": "roy gizbar roy gizbarroy gizbar roy gizba rroy gizbar roy gizbar roy gizbar"
 }
+
+###
+POST http://localhost:3000/textToSpeechHebrew
+Content-Type: application/json
+
+{
+    "text": "שלום לכם ילדים טובים"
+}

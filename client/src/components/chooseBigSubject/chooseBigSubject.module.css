@@ -11,6 +11,15 @@
     position: relative;
   }
 
+.back_icon{
+  color: orange;
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
 .refreshIcon{
   position: absolute;
   top: 15px;

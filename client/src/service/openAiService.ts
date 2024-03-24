@@ -144,11 +144,11 @@ export async function getImage(script: string) {
 
 // hebrew script section - - - - - - - - - - - - - - - - - -  - - - - -
 
-export async function getHebrewPodcast(script: ScriptGPT) {
+export async function getHebrewPodcast(subject: string) {
     const requestOptions = {
         method: "post",
         url: OpenAIUrl,
-        data: hebrewPrompt(script),
+        data: hebrewPrompt(subject),
         headers: openAiheaders,
     };
 
