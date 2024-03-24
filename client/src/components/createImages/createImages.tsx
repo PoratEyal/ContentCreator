@@ -107,10 +107,11 @@ const CreateImages: React.FC = () => {
             {image1 && <label className={styles.line}></label>}
 
             <div className={styles.imagesContainer}>
-                {image1 ? <Loading /> : <img className={styles.img} src={image1[0].url} alt={`Generated img`} />}
-                {image2 ? <Loading /> : <img className={styles.img} src={image2[0].url} alt={`Generated img`} />}
-                {image3 ? <Loading /> : <img className={styles.img} src={image3[0].url} alt={`Generated img`} />}
+                {!image1 ? <Loading /> : <img className={styles.img} src={image1[0]?.url} alt="Generated img" />}
+                {!image2 ? <Loading /> : <img className={styles.img} src={image2[0]?.url} alt="Generated img" />}
+                {!image3 ? <Loading /> : <img className={styles.img} src={image3[0]?.url} alt="Generated img" />}
             </div>
+
         </div>
     );
 };

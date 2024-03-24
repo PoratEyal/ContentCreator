@@ -43,7 +43,7 @@ const FormUser: React.FC = () => {
 
   return <div className={styles.container}>
 
-      <IoArrowBackOutline onClick={() => navigate('/chooseTinySubject')} className={styles.back_icon}></IoArrowBackOutline>
+      <IoArrowBackOutline onClick={() => navigate('/')} className={styles.back_icon}></IoArrowBackOutline>
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.input_div}>
