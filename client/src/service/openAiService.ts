@@ -44,13 +44,21 @@ export async function getTinySubjects(bigSubject: string) {
         const response = await axios(requestOptionsTiny);
         const responseData = response.data;
         const subjectListString = responseData?.choices?.[0]?.message?.function_call?.arguments;
+        
         const subjectList = JSON.parse(subjectListString);
-        return subjectList;
+
+        if (subjectList.subjectList.length > 5) {
+            return subjectList; // Return the list if it contains more than one subject
+        } else {
+            console.log("Received only one subject, trying again...");
+            return await getTinySubjects(bigSubject); // Recursive call until the condition is met
+        }
     } catch (error) {
         console.error(error);
         throw error;
     }
 }
+
 
 // script section - - - - - - - - - - - - - - - - - -  - - - - -
 
