@@ -88,7 +88,7 @@ const CreateImages: React.FC = () => {
             <IoArrowBackOutline onClick={() => navigate('/')} className={styles.back_icon}></IoArrowBackOutline>
 
             <div className={styles.script_div}>
-                <h3>{data.bigSubject} Script</h3>
+                <h3>{data.mainSubject}</h3>
                 <div className={styles.script}>{script.text}</div>
                 <FaRegCopy onClick={() => copyToClipboard(script.text)} className={styles.copyIcon}></FaRegCopy>
             </div>

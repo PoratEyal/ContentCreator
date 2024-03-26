@@ -17,21 +17,41 @@ router.post("/textToSpeech", async (req, res) => {
 
     const text = req.body.text;
     const endpoint = `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${apiKey}`;
-    const payload = {
-      audioConfig: {
-        audioEncoding: "MP3",
-        effectsProfileId: ["small-bluetooth-speaker-class-device"],
-        pitch: -7.0,
-        speakingRate: 1
-      },
-      input: {
-        text: text
-      },
-      voice: {
-        languageCode: "en-US",
-        name: "en-US-Wavenet-D"
+    // const payload = {
+    //   audioConfig: {
+    //     audioEncoding: "MP3",
+    //     effectsProfileId: ["small-bluetooth-speaker-class-device"],
+    //     pitch: -7.0,
+    //     speakingRate: 1
+    //   },
+    //   input: {
+    //     text: text
+    //   },
+    //   voice: {
+    //     languageCode: "en-US",
+    //     name: "en-US-Wavenet-D"
+    //   }
+    // };
+
+    const payload = 
+      {
+        "audioConfig": {
+          "audioEncoding": "MP3",
+          "effectsProfileId": [
+            "medium-bluetooth-speaker-class-device"
+          ],
+          "pitch": 0,
+          "speakingRate": 1
+        },
+        "input": {
+          "text": text
+        },
+        "voice": {
+          "languageCode": "en-US",
+          "name": "en-US-Wavenet-B"
+        }
       }
-    };
+    
 
     const response = await axios.post(endpoint, payload)
     res.json(response.data)
