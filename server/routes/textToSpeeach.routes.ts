@@ -21,7 +21,7 @@ router.post("/textToSpeech", async (req, res) => {
       audioConfig: {
         audioEncoding: "MP3",
         effectsProfileId: ["small-bluetooth-speaker-class-device"],
-        pitch: -4.4,
+        pitch: -12.0,
         speakingRate: 1
       },
       input: {

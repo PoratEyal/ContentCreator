@@ -44,7 +44,7 @@ const CreateImages: React.FC = () => {
                 const text = script.text
                 console.log(text);
                 
-                const response = await axios.post(productionUrl, { text });
+                const response = await axios.post(developUrl, { text });
                 const audioSrc = `data:audio/mp3;base64,${response.data.audioContent}`
                 setAudioUrl(audioSrc);
             } catch (error) {

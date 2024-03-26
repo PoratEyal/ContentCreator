@@ -1,10 +1,10 @@
-const imgPrompt = (script: string) => {
+const imgPrompt = (dataDescription: string) => {
     return {
         model: "gpt-4",
         messages: [
             {
                 role: "user",
-                content: `data - ${script}. from this data i want you to create realistic image about this data. dont add words to the image`,
+                content: `I have data described as follows: "${dataDescription}". Based on this description, generate a realistic image that visually represents this data. The image should be highly detailed and aim for photorealism. Please ensure no text or words are included in the image, focusing solely on the visual representation of the data.`,
             },
         ],
         temperature: 0.7,

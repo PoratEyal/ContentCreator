@@ -31,7 +31,7 @@ const tinySubjectPrompt = (bigSubject: string) => {
         messages: [
             {
                 role: "user",
-                content: `Provide 6 cool and creative subtopics for 10-20 years old related to ${bigSubject}. i want the subtopics will be intersting and Talking about things of our time. return me them in json format. dont ever retuen me answer like this: {
+                content: `Provide 6 cool and creative subtopics for 10-20 years old related to ${bigSubject}. i want the subtopics will be Talking about things of our time and most important they need to be interesting and thought-provoking. return me them in json format. dont ever retuen me answer like this: {
                     "subjectList": ${bigSubject}
                   } return me everytime 6 subTopics and not 1!!!!`
             },

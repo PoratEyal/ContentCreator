@@ -6,6 +6,7 @@ import { useContentContext } from '../../context/ContentContext';
 import { ScriptGPT } from '../../model/types/GPT';
 import { initScriptGPT } from '../../model/initialization/GPT';
 import { FaWandMagicSparkles } from "react-icons/fa6";
+import { VscLoading } from "react-icons/vsc";
 
 const FormUser: React.FC = () => {
 
@@ -13,6 +14,7 @@ const FormUser: React.FC = () => {
   const [formData, setFormData] = useState<ScriptGPT>(initScriptGPT);
   const navigate = useNavigate();
   const [script, setScript] = useState();
+  const [btnClicked, setBtnClicked] = useState(false)
 
   useEffect(() => {
     setFormData((prev) => {
@@ -75,9 +77,14 @@ const FormUser: React.FC = () => {
 
          
 
-          <button type="submit" className={styles.submit_btn}>
-            <FaWandMagicSparkles></FaWandMagicSparkles>
-            <label>Generate</label>
+          <button type="submit" onClick={() => setBtnClicked(true)} className={styles.submit_btn}>
+            {btnClicked ? 
+              <VscLoading className={styles.loading_icon}></VscLoading>
+            :
+              <div className={styles.div_data_btn}>
+                <FaWandMagicSparkles></FaWandMagicSparkles>
+                <label>Generate</label>
+              </div>}
           </button>
 
           <button className={styles.ai_btn} onClick={() => navigate('/chooseSubject')}>
